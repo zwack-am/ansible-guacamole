@@ -1,0 +1,6 @@
+---
+
+- hosts: guacamole-servers
+  roles: 
+    - guacamole-server
+    - guacamole-client

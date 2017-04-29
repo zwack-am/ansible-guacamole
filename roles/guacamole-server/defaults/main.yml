@@ -1,0 +1,29 @@
+---
+
+prereqs:
+  - libcairo2-dev
+  - libjpeg62-turbo-dev
+  - libpng12-dev
+  - libossp-uuid-dev
+  - libavcodec-dev
+  - libavutil-dev
+  - libswscale-dev
+  - libfreerdp-dev
+  - libpango1.0-dev
+  - libssh2-1-dev
+  - libtelnet-dev
+  - libvncserver-dev
+  - libpulse-dev
+  - libssl-dev
+  - libvorbis-dev
+  - libwebp-dev
+
+server_source:
+  http://apache.org/dyn/closer.cgi?action=download&filename=/incubator/guacamole/0.9.12-incubating/source/guacamole-server-0.9.12-incubating.tar.gz
+
+source_directory:
+  guacamole-server-0.9.12-incubating
+
+source_creates:
+  "{{ source_directory }}/README"
+

@@ -1,0 +1,13 @@
+---
+
+- name: Reinstall guacd
+  command: make install
+  args:
+    chdir: /usr/local/src/{{ source_directory }}
+  notify: Restart guacd
+
+- name: Restart guacd
+  service:
+    name: guacd
+    status: restarted
+    enabled: yes

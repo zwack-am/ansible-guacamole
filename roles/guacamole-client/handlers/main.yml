@@ -1,0 +1,7 @@
+---
+
+- name: Restart Tomcat
+  service:
+    name: tomcat8
+    state: restarted
+    enabled: yes

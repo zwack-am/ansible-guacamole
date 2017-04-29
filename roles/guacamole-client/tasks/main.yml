@@ -1,0 +1,14 @@
+---
+
+- name: Install the pre-requisite packages
+  package: 
+    name: "{{ item }}"
+    state: present
+  with_items: 
+    - "{{ prereqs }}"
+
+- name: Download the precompiled client package to the Tomcat webapps directory
+  get_url:
+    url: "{{ client_source }}"
+    dest: /var/lib/tomcat8/webapps/guacamole.war
+  notify: Restart Tomcat

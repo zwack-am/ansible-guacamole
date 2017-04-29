@@ -1,0 +1,36 @@
+---
+
+- name: Install the pre-requisite packages
+  package: 
+    name: "{{ item }}"
+    state: present
+  with_items: 
+    - "{{ prereqs }}"
+
+- name: Download and unpack the server package
+  unarchive:
+    src: "{{ server_source }}"
+    dest: /usr/local/src
+    remote_src: true
+    creates: /usr/local/src/{{ source_creates }}
+
+- name: Configure the server package
+  command: ./configure --with-init.dir=/etc/init.d
+  args:
+    chdir: /usr/local/src/{{ source_directory }}
+    creates: /usr/local/src/{{ source_directory }}/Makefile
+
+- name: Compile the server package
+  command: make
+  args:
+    chdir: /usr/local/src/{{ source_directory }}
+    creates: /usr/local/src/{{ source_directory }}/src/guacd/guacd
+  notify: Reinstall guacd
+
+- name: Install the server package
+  command: make install
+  args:
+    chdir: /usr/local/src/{{ source_directory }}
+    creates: /usr/local/sbin/guacd
+  notify: Restart guacd
+
