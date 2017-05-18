@@ -1,0 +1,36 @@
+---
+
+- name: Create the Guacamole database
+  mysql_db:
+    name: "{{ guacamole_db }}"
+    state: present
+
+- name: Create the Guacamole database user
+  mysql_user:
+    name: "{{ guacamole_db_user }}"
+    password: "{{ guacamole_db_password }}"
+    priv: "{{ guacamole_db }}.*/SELECT,INSERT,UPDATE,DELETE"
+    state: present
+
+- name: Get the scripts to create the actual database
+
+- name: Run the database scripts
+
+- name: Create the Guacamole extensions directory
+
+- name: Download the Guacamole database extension
+
+- name: Install the jdbc driver
+  package:
+    name: libmysql-java
+    state: installed
+
+- name: Install the jdbc driver in the Guacamole home directory
+  file:
+    src: /usr/share/java/mysql-connector
+    dest: /...
+    state: link
+
+- name: Modify the Guacamole configuration file
+
+

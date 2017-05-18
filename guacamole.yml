@@ -3,4 +3,6 @@
 - hosts: guacamole-servers
   roles: 
     - guacamole-server
+    - mariadb
+#    - guacamole-database
     - guacamole-client

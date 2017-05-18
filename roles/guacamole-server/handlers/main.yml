@@ -9,5 +9,5 @@
 - name: Restart guacd
   service:
     name: guacd
-    status: restarted
+    state: restarted
     enabled: yes

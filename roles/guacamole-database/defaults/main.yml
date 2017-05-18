@@ -1,0 +1,7 @@
+---
+
+# This file should really be kept in ansible_vault
+
+guacamole_database: guacamole
+guacamole_db_user: guacamole
+guacamole_db_password: guacamole
